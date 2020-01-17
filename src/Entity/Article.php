@@ -5,10 +5,24 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+
 
 /**
+ * @ApiResource(
+ *     itemOperations={
+ *         "countArticle"={
+ *             "route_name"="countArticle",
+ *             "swagger_context"={
+ *                  "parameters"={}
+ *              }
+ *         }
+ *     },
+ *    collectionOperations ={"get","post"}
+ * )
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
+
 class Article
 {
     /**
