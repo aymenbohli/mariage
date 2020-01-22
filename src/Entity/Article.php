@@ -11,10 +11,32 @@ use ApiPlatform\Core\Annotation\ApiResource;
 /**
  * @ApiResource(
  *     itemOperations={
+ *         "get",
+ *         "put",
+ *         "delete",
  *         "countArticle"={
  *             "route_name"="countArticle",
  *             "swagger_context"={
- *                  "parameters"={}
+ *                  "operationId"="getBookingItem",
+ *                  "summary"="Retrieves details on a booking",
+ *                  "parameters"= {
+ *                      {
+ *                          "name"="id",
+ *                          "description"="Booking ID",
+ *                          "default"="15000",
+ *                          "in"="path",
+ *                          "required"=true,
+ *                          "type"="string"
+ *                      }
+ *                  },
+ *                  "responses"={
+ *                      "200"={
+ *                          "description"="Results retrieved"
+ *                      },
+ *                      "404"={
+ *                          "description"="Booking not found"
+ *                      }
+ *                  }
  *              }
  *         }
  *     },
@@ -22,7 +44,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * )
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
  */
-
 class Article
 {
     /**
@@ -56,7 +77,6 @@ class Article
     {
         $this->media = new ArrayCollection();
     }
-
 
 
     public function getId(): ?int
